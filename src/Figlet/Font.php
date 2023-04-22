@@ -18,57 +18,57 @@ class Font
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var array
      */
-    private $fileCollection;
+    private array $fileCollection;
 
     /**
      * @var string
      */
-    private $signature;
+    private string $signature;
 
     /**
      * @var string
      */
-    private $hardBlank;
+    private string $hardBlank;
 
     /**
      * @var int
      */
-    private $height;
+    private int $height;
 
     /**
      * @var int
      */
-    private $maxLength;
+    private int $maxLength;
 
     /**
      * @var int
      */
-    private $oldLayout;
+    private int $oldLayout;
 
     /**
      * @var int
      */
-    private $commentLines;
+    private int $commentLines;
 
     /**
      * @var int
      */
-    private $printDirection;
+    private int $printDirection;
 
     /**
      * @var int
      */
-    private $fullLayout;
+    private int $fullLayout;
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -78,7 +78,7 @@ class Font
      *
      * @return Font
      */
-    public function setName($name)
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -88,7 +88,7 @@ class Font
     /**
      * @return array
      */
-    public function getFileCollection()
+    public function getFileCollection(): array
     {
         return $this->fileCollection;
     }
@@ -98,7 +98,7 @@ class Font
      *
      * @return Font
      */
-    public function setFileCollection($fileCollection)
+    public function setFileCollection(array $fileCollection): static
     {
         $this->fileCollection = $fileCollection;
 
@@ -109,7 +109,7 @@ class Font
     /**
      * @return string
      */
-    public function getHardBlank()
+    public function getHardBlank(): string
     {
         return $this->hardBlank;
     }
@@ -119,7 +119,7 @@ class Font
      *
      * @return Font
      */
-    public function setHardBlank($hardBlank)
+    public function setHardBlank(string $hardBlank): static
     {
         $this->hardBlank = $hardBlank;
 
@@ -129,7 +129,7 @@ class Font
     /**
      * @return string
      */
-    public function getSignature()
+    public function getSignature(): string
     {
         return $this->signature;
     }
@@ -139,7 +139,7 @@ class Font
      *
      * @return Font
      */
-    public function setSignature($signature)
+    public function setSignature(string $signature): static
     {
         $this->signature = $signature;
 
@@ -149,7 +149,7 @@ class Font
     /**
      * @return int
      */
-    public function getHeight()
+    public function getHeight(): int
     {
         return $this->height;
     }
@@ -159,7 +159,7 @@ class Font
      *
      * @return Font
      */
-    public function setHeight($height)
+    public function setHeight(int $height): static
     {
         $this->height = $height;
 
@@ -169,7 +169,7 @@ class Font
     /**
      * @return int
      */
-    public function getOldLayout()
+    public function getOldLayout(): int
     {
         return $this->oldLayout;
     }
@@ -179,7 +179,7 @@ class Font
      *
      * @return Font
      */
-    public function setOldLayout($oldLayout)
+    public function setOldLayout(int $oldLayout): static
     {
         $this->oldLayout = $oldLayout;
 
@@ -189,7 +189,7 @@ class Font
     /**
      * @return int
      */
-    public function getMaxLength()
+    public function getMaxLength(): int
     {
         return $this->maxLength;
     }
@@ -199,7 +199,7 @@ class Font
      *
      * @return Font
      */
-    public function setMaxLength($maxLength)
+    public function setMaxLength(int $maxLength): static
     {
         $this->maxLength = $maxLength;
 
@@ -209,7 +209,7 @@ class Font
     /**
      * @return int
      */
-    public function getPrintDirection()
+    public function getPrintDirection(): int
     {
         return $this->printDirection;
     }
@@ -219,7 +219,7 @@ class Font
      *
      * @return Font
      */
-    public function setPrintDirection($printDirection)
+    public function setPrintDirection(int $printDirection): static
     {
         $this->printDirection = $printDirection;
 
@@ -229,7 +229,7 @@ class Font
     /**
      * @return int
      */
-    public function getCommentLines()
+    public function getCommentLines(): int
     {
         return $this->commentLines;
     }
@@ -239,7 +239,7 @@ class Font
      *
      * @return Font
      */
-    public function setCommentLines($commentLines)
+    public function setCommentLines(int $commentLines): static
     {
         $this->commentLines = $commentLines;
 
@@ -249,7 +249,7 @@ class Font
     /**
      * @return int
      */
-    public function getFullLayout()
+    public function getFullLayout(): int
     {
         return $this->fullLayout;
     }
@@ -259,7 +259,7 @@ class Font
      *
      * @return Font
      */
-    public function setFullLayout($fullLayout)
+    public function setFullLayout(int $fullLayout): static
     {
         $this->fullLayout = $fullLayout;
 
