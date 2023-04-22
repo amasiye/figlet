@@ -8,6 +8,8 @@
 
 namespace Povils\Figlet;
 
+use Exception;
+
 /**
  * Class Figlet
  *
@@ -21,52 +23,55 @@ class Figlet implements FigletInterface
     const FIRST_ASCII_CHARACTER = 32;
 
     /**
-     * @var ColorManager
+     * @var ColorManager Color manager object.
      */
-    private $colorManager;
+    private ColorManager $colorManager;
 
     /**
-     * @var FontManager
+     * @var FontManager Font manager object.
      */
-    private $fontManager;
+    private FontManager $fontManager;
 
     /**
-     * @var Font
+     * @var Font Font object.
      */
-    private $font;
+    private Font $font;
 
     /**
-     * @var string
+     * @var string Background color.
      */
-    private $backgroundColor;
+    private string $backgroundColor;
 
     /**
-     * @var string
+     * @var string Font color.
      */
-    private $fontColor;
+    private string $fontColor;
 
     /**
-     * @var string
+     * @var string Font name.
      */
-    private $fontName;
+    private string $fontName;
 
     /**
-     * @var string
+     * @var string Font directory.
      */
-    private $fontDir;
+    private string $fontDir;
 
     /**
-     * @var int
+     * @var int Font stretching.
      */
-    private $stretching;
+    private int $stretching;
 
     /**
      * This array will hold used Figlet characters.
      *
-     * @var array
+     * @var array Characters array.
      */
-    private $characters = [];
+    private array $characters = [];
 
+    /**
+     * Figlet constructor.
+     */
     public function __construct()
     {
         $this->fontDir = __DIR__ . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR;
@@ -76,8 +81,9 @@ class Figlet implements FigletInterface
 
     /**
      * {@inheritdoc}
+     * @throws Exception
      */
-    public function write($text)
+    public function write(string $text): FigletInterface
     {
         echo $this->render($text);
 
@@ -86,8 +92,9 @@ class Figlet implements FigletInterface
 
     /**
      * {@inheritdoc}
+     * @throws Exception
      */
-    public function render($text)
+    public function render(string $text): string
     {
         $this->font = $this->getFontManager()->loadFont($this->fontName, $this->fontDir);
 
@@ -103,7 +110,7 @@ class Figlet implements FigletInterface
     /**
      * {@inheritdoc}
      */
-    public function setBackgroundColor($color)
+    public function setBackgroundColor(string $color): FigletInterface
     {
         $this->backgroundColor = $color;
 
@@ -113,7 +120,7 @@ class Figlet implements FigletInterface
     /**
      * {@inheritdoc}
      */
-    public function setFontColor($color)
+    public function setFontColor(string $color): FigletInterface
     {
         $this->fontColor = $color;
 
@@ -123,7 +130,7 @@ class Figlet implements FigletInterface
     /**
      * {@inheritdoc}
      */
-    public function setFont($fontName)
+    public function setFont(string $fontName): FigletInterface
     {
         $this->fontName = $fontName;
 
@@ -133,7 +140,7 @@ class Figlet implements FigletInterface
     /**
      * {@inheritdoc}
      */
-    public function setFontDir($fontDir)
+    public function setFontDir(string $fontDir): FigletInterface
     {
         $this->fontDir = $fontDir;
 
@@ -143,7 +150,7 @@ class Figlet implements FigletInterface
     /**
      * {@inheritdoc}
      */
-    public function setFontStretching($stretching)
+    public function setFontStretching(int $stretching): FigletInterface
     {
         $this->stretching = $stretching;
 
@@ -153,7 +160,7 @@ class Figlet implements FigletInterface
     /**
      * Unset some arrays and objects.
      */
-    public function clear()
+    public function clear(): void
     {
         unset($this->characters, $this->font);
     }
@@ -161,11 +168,11 @@ class Figlet implements FigletInterface
     /**
      * Generates Figlet text.
      *
-     * @param string $text
+     * @param string $text Text to generate Figlet text.
      *
-     * @return string
+     * @return string Figlet text.
      */
-    private function generateFigletText($text)
+    private function generateFigletText(string $text): string
     {
         $figletCharacters = $this->getFigletCharacters($text);
 
@@ -173,11 +180,11 @@ class Figlet implements FigletInterface
     }
 
     /**
-     * @param string $text
+     * @param string $text Text to colorize.
      *
-     * @return array
+     * @return array Colorized text.
      */
-    private function getFigletCharacters($text)
+    private function getFigletCharacters(string $text): array
     {
         $figletCharacters = [];
         foreach (str_split($text) as $character) {
@@ -188,11 +195,11 @@ class Figlet implements FigletInterface
     }
 
     /**
-     * @param string $character
+     * @param string $character Character to colorize.
      *
-     * @return array
+     * @return array Colorized character.
      */
-    private function getFigletCharacter($character)
+    private function getFigletCharacter(string $character): array
     {
         if (isset($this->characters[$this->fontName][$character])) {
             return $this->characters[$this->fontName][$character];
@@ -216,25 +223,23 @@ class Figlet implements FigletInterface
     }
 
     /**
-     * @param string $character
+     * @param string $character Character to get lines.
      *
-     * @return array
+     * @return array Figlet character lines.
      */
-    private function getFigletCharacterLines($character)
+    private function getFigletCharacterLines(string $character): array
     {
         $letterStartPosition = $this->getLetterStartPosition($character);
 
-        $lines = array_slice($this->font->getFileCollection(), $letterStartPosition, $this->font->getHeight());
-
-        return $lines;
+        return array_slice($this->font->getFileCollection(), $letterStartPosition, $this->font->getHeight());
     }
 
     /**
-     * @param array $figletCharacters
+     * @param array $figletCharacters Figlet characters.
      *
-     * @return string
+     * @return string Figlet text.
      */
-    private function combineFigletCharacters($figletCharacters)
+    private function combineFigletCharacters(array $figletCharacters): string
     {
         $figletText = '';
 
@@ -257,52 +262,43 @@ class Figlet implements FigletInterface
      * @param string $figletText
      *
      * @return string
+     * @throws Exception
      */
-    private function colorize($figletText)
+    private function colorize(string $figletText): string
     {
-        $figletText = $this
+        return $this
             ->getColorManager()
             ->colorize(
                 $figletText,
                 $this->fontColor,
                 $this->backgroundColor
             );
-
-        return $figletText;
     }
 
     /**
-     * @return ColorManager
+     * @return ColorManager Color manager.
      */
-    private function getColorManager()
+    private function getColorManager(): ColorManager
     {
-        if (null === $this->colorManager) {
-            return $this->colorManager = new ColorManager();
-        }
-
-        return $this->colorManager;
+      return $this->colorManager;
     }
 
     /**
-     * @return FontManager
+     * @return FontManager Font manager.
      */
-    private function getFontManager()
+    private function getFontManager(): FontManager
     {
-        if (null === $this->fontManager) {
-            return $this->fontManager = new FontManager();
-        }
-
-        return $this->fontManager;
+      return $this->fontManager;
     }
 
     /**
      * Remove newlines characters.
      *
-     * @param string $singleLine
+     * @param string $singleLine Single line.
      *
-     * @return string
+     * @return string Single line without newlines.
      */
-    private function removeNewlines($singleLine)
+    private function removeNewlines(string $singleLine): string
     {
        return preg_replace('/[\\r\\n]*/', '', $singleLine);
     }
@@ -310,11 +306,11 @@ class Figlet implements FigletInterface
     /**
      * Adds space(s) in the end to Figlet character.
      *
-     * @return string
+     * @return string Space(s) to add.
      */
-    private function addStretching()
+    private function addStretching(): string
     {
-        if (is_numeric($this->stretching) && 0 < $this->stretching) {
+        if (0 < $this->stretching) {
             $stretchingSpace = ' ';
         } else {
             $stretchingSpace = '';
@@ -327,9 +323,9 @@ class Figlet implements FigletInterface
     /**
      * @param string $character
      *
-     * @return int
+     * @return float|int
      */
-    private function getLetterStartPosition($character)
+    private function getLetterStartPosition(string $character): float|int
     {
         return ((ord($character) - self::FIRST_ASCII_CHARACTER) * $this->font->getHeight()) + 1 + $this->font->getCommentLines();
     }
