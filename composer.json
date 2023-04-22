@@ -1,5 +1,5 @@
 {
-  "name": "povils/figlet",
+  "name": "amasiye/figlet",
   "type": "library",
   "description": "Figlet text generator - PHP",
   "keywords": ["github", "figlet", "ascii", "text", "php"],
@@ -8,6 +8,10 @@
     {
       "name": "Povilas Susinskas",
       "email": "povilassusinskas@gmail.com"
+    },
+    {
+      "name": "Andrew Masiye",
+      "email": "amasiye313@gmail.com"
     }
   ],
   "require": {
