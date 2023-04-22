@@ -6,14 +6,14 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet;
+namespace Amasiye\Figlet;
 
 use Exception;
 
 /**
  * Class ColorManager
  *
- * @package Povils\Figlet
+ * @package Amasiye\Figlet
  */
 class ColorManager
 {

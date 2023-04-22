@@ -6,14 +6,14 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet;
+namespace Amasiye\Figlet;
 
 use Exception;
 
 /**
  * Class Figlet
  *
- * @package Povils\Figlet
+ * @package Amasiye\Figlet
  */
 class Figlet implements FigletInterface
 {

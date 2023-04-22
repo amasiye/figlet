@@ -23,12 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Povils\\Figlet\\": "src/Figlet"
+      "Amasiye\\Figlet\\": "src/Figlet"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Povils\\Figlet\\Tests\\": "tests/"
+      "Amasiye\\Figlet\\Tests\\": "tests/"
     }
   },
   "extra": {

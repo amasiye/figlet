@@ -6,12 +6,12 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet;
+namespace Amasiye\Figlet;
 
 /**
  * Class Font
  *
- * @package Povils\Figlet
+ * @package Amasiye\Figlet
  */
 class Font
 {

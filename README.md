@@ -40,7 +40,7 @@ Figlet is a computer program that generates text banners, in a variety of typefa
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Povils\Figlet\Figlet;
+use Amasiye\Figlet\Figlet;
 
 // Default font is "big"
 $figlet = new Figlet();

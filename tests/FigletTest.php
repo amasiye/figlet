@@ -6,9 +6,9 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet\Tests;
+namespace Amasiye\Figlet\Tests;
 
-use Povils\Figlet\Figlet;
+use Amasiye\Figlet\Figlet;
 use PHPUnit\Framework\TestCase as TestCase;
 
 /**

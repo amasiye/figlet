@@ -6,9 +6,9 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet\Command;
+namespace Amasiye\Figlet\Command;
 
-use Povils\Figlet\Figlet;
+use Amasiye\Figlet\Figlet;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class FigletCommand
  *
- * @package Povils\Figlet\Command
+ * @package Amasiye\Figlet\Command
  */
 class FigletCommand extends Command
 {

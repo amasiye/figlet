@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Povils\Figlet\Command\FigletCommand;
+use Amasiye\Figlet\Command\FigletCommand;
 
 $application = new Application('figlet', '1.0.0');
 $command = new FigletCommand();

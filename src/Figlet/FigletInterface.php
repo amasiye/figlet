@@ -6,12 +6,12 @@
  * @author Povilas Susinskas
  */
 
-namespace Povils\Figlet;
+namespace Amasiye\Figlet;
 
 /**
  * Interface FigletInterface
  *
- * @package Povils\Figlet
+ * @package Amasiye\Figlet
  */
 interface FigletInterface
 {
