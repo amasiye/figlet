@@ -18,15 +18,15 @@
 
 ## Installation
 
- Available as [Composer] package [povils/figlet].
+ Available as [Composer] package [amasiye/figlet].
 
 ```
-composer require povils/figlet "dev-master"
+composer require amasiye/figlet "dev-master"
 ```
 
 
 [composer]: http://getcomposer.org/
-[povils/figlet]: https://packagist.org/packages/povils/figlet
+[amasiye/figlet]: https://packagist.org/packages/amasiye/figlet
 
 ## What is this? And what is Figlet?
 
