@@ -21,7 +21,7 @@
  Available as [Composer] package [amasiye/figlet].
 
 ```
-composer require amasiye/figlet "dev-master"
+composer require amasiye/figlet
 ```
 
 
