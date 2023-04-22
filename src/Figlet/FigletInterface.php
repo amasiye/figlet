@@ -16,51 +16,65 @@ namespace Povils\Figlet;
 interface FigletInterface
 {
     /**
-     * @param string $color
+     * Sets background color.
      *
-     * @return FigletInterface
+     * @param string $color Background color.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function setBackgroundColor($color);
+    public function setBackgroundColor(string $color): FigletInterface;
 
     /**
-     * @param string $fontName
+     * Sets the font.
      *
-     * @return FigletInterface
+     * @param string $fontName Name of the font.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function setFont($fontName);
+    public function setFont(string $fontName): FigletInterface;
 
     /**
-     * @param string $color
+     * Sets font color.
      *
-     * @return FigletInterface
+     * @param string $color Font color.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function setFontColor($color);
+    public function setFontColor(string $color): FigletInterface;
 
     /**
-     * @param string $fontDir
+     * Sets font directory.
      *
-     * @return FigletInterface
+     * @param string $fontDir Font directory.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function setFontDir($fontDir);
+    public function setFontDir(string $fontDir): FigletInterface;
 
     /**
-     * @param int $stretching
+     * Sets font horizontal layout.
      *
-     * @return FigletInterface
+     * @param int $stretching Font stretching.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function setFontStretching($stretching);
+    public function setFontStretching(int $stretching): FigletInterface;
 
     /**
-     * @param string $text
+     * Writes text.
      *
-     * @return FigletInterface
+     * @param string $text Text to write.
+     *
+     * @return FigletInterface Figlet object.
      */
-    public function write($text);
+    public function write(string $text): FigletInterface;
 
     /**
-     * @param string $text
+     * Renders text.
      *
-     * @return string
+     * @param string $text Text to render.
+     *
+     * @return string Rendered text.
      */
-    public function render($text);
+    public function render(string $text): string;
 }
