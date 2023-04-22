@@ -8,6 +8,8 @@
 
 namespace Povils\Figlet;
 
+use Exception;
+
 /**
  * Class ColorManager
  *
@@ -18,7 +20,7 @@ class ColorManager
     /**
      * @var array
      */
-    private $fontColors = [
+    private array $fontColors = [
         'black' => '0;30',
         'dark_gray' => '1;30',
         'blue' => '0;34',
@@ -40,7 +42,7 @@ class ColorManager
     /**
      * @var array
      */
-    private $backgroundColors = [
+    private array $backgroundColors = [
         'black' => '40',
         'red' => '41',
         'green' => '42',
@@ -52,14 +54,14 @@ class ColorManager
     ];
 
     /**
-     * @param string      $text
+     * @param string $text
      * @param string|null $fontColor
      * @param string|null $backgroundColor
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    public function colorize($text, $fontColor, $backgroundColor)
+    public function colorize(string $text, ?string $fontColor, ?string $backgroundColor): string
     {
         $coloredText = '';
 
@@ -81,9 +83,9 @@ class ColorManager
      * @param string $coloredText
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    private function colorizeFont($fontColor, $coloredText)
+    private function colorizeFont(string $fontColor, string $coloredText): string
     {
         if (isset($this->fontColors[$fontColor])) {
            return $this->addColorCode($coloredText, $this->fontColors[$fontColor]);
@@ -100,9 +102,9 @@ class ColorManager
      * @param string $coloredText
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    private function colorizeBackground($backgroundColor, $coloredText)
+    private function colorizeBackground(string $backgroundColor, string $coloredText): string
     {
         if (isset($this->backgroundColors[$backgroundColor])) {
            return $this->addColorCode($coloredText, $this->backgroundColors[$backgroundColor]);
@@ -119,7 +121,7 @@ class ColorManager
      *
      * @return array
      */
-    private function getFontColors()
+    private function getFontColors(): array
     {
         return array_keys($this->fontColors);
     }
@@ -129,7 +131,7 @@ class ColorManager
      *
      * @return array
      */
-    private function getBackgroundColors()
+    private function getBackgroundColors(): array
     {
         return array_keys($this->backgroundColors);
     }
@@ -140,7 +142,7 @@ class ColorManager
      *
      * @return string
      */
-    private function addColorCode($coloredText, $color)
+    private function addColorCode(string $coloredText, string $color): string
     {
         $coloredText .= "\033[" . $color . 'm';
 
