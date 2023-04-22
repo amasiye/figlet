@@ -25,7 +25,7 @@ class FigletCommand extends Command
    /**
     * @inheritdoc
     */
-   protected function configure()
+   protected function configure(): void
    {
       $this
          ->setName('figlet')
@@ -62,7 +62,7 @@ class FigletCommand extends Command
    /**
     * @inheritdoc
     */
-   protected function execute(InputInterface $input, OutputInterface $output)
+   protected function execute(InputInterface $input, OutputInterface $output): ?int
    {
 
       $figlet = new Figlet();
