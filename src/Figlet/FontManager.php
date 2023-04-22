@@ -8,6 +8,8 @@
 
 namespace Povils\Figlet;
 
+use Exception;
+
 /**
  * Class FontManager
  *
@@ -30,16 +32,16 @@ class FontManager
      */
     private $font;
 
-    /**
-     * Loads Font.
-     *
-     * @param string $fontName
-     * @param string $fontDirectory
-     *
-     * @return Font
-     * @throws \Exception
-     */
-    public function loadFont($fontName, $fontDirectory)
+  /**
+   * Loads Font.
+   *
+   * @param string $fontName Name of the font.
+   * @param string $fontDirectory Directory where font is located.
+   *
+   * @return Font|null Font object or null if no font is loaded.
+   * @throws Exception
+   */
+    public function loadFont(string $fontName, string $fontDirectory): ?Font
     {
         if ($this->needLoad($fontName)) {
            return $this->createFont($fontName, $fontDirectory);
@@ -51,9 +53,9 @@ class FontManager
     /**
      * Return current loaded font.
      *
-     * @return Font|null
+     * @return Font|null Font object or null if no font is loaded.
      */
-    private function currentFont()
+    private function currentFont(): ?Font
     {
         return $this->font;
     }
@@ -61,13 +63,13 @@ class FontManager
     /**
      * Creates Font.
      *
-     * @param string $fontName
-     * @param string $fontDirectory
+     * @param string $fontName Name of the font.
+     * @param string $fontDirectory Directory where font is located.
      *
-     * @return Font
-     * @throws \Exception
+     * @return Font Font object.
+     * @throws Exception
      */
-    private function createFont($fontName, $fontDirectory)
+    private function createFont(string $fontName, string $fontDirectory): Font
     {
         $font = new Font();
 
@@ -90,7 +92,7 @@ class FontManager
      *
      * @return Font
      */
-    private function setFontParameters(Font $font)
+    private function setFontParameters(Font $font): Font
     {
         $parameters = $this->extractHeadlineParameters($font->getFileCollection());
 
@@ -110,11 +112,11 @@ class FontManager
     /**
      * Extracts Figlet headline parameters.
      *
-     * @param array $fileCollection
+     * @param array $fileCollection Collection of lines from Figlet font file.
      *
-     * @return array
+     * @return array Array of headline parameters.
      */
-    private function extractHeadlineParameters($fileCollection)
+    private function extractHeadlineParameters(array $fileCollection): array
     {
         $parameters = [];
 
@@ -141,37 +143,41 @@ class FontManager
     /**
      * Checks if it is needed to load font.
      *
-     * @param string $fontName
+     * @param string $fontName Name of the font.
      *
-     * @return bool
+     * @return bool True if it is needed to load font, false otherwise.
      */
-    private function needLoad($fontName)
+    private function needLoad(string $fontName): bool
     {
         return null === $this->currentFont() || $fontName !== $this->currentFont()->getName();
     }
 
     /**
-     * @param string $fontName
-     * @param string $fontDirectory
+     * Gets file name.
      *
-     * @return string
-     * @throws \Exception
+     * @param string $fontName Name of the font.
+     * @param string $fontDirectory Directory where font is located.
+     *
+     * @return string File name.
+     * @throws Exception If file does not exist.
      */
-    private function getFileName($fontName, $fontDirectory)
+    private function getFileName(string $fontName, string $fontDirectory): string
     {
         $fileName = $fontDirectory . $fontName . '.' . self::FIGLET_FORMAT;
 
         if (false === file_exists($fileName)) {
-            throw new \Exception('Could not open ' . $fileName);
+            throw new Exception('Could not open ' . $fileName);
         }
 
         return $fileName;
     }
 
     /**
-     * @param Font $font
+     * Sets current font.
+     *
+     * @param Font $font Font object.
      */
-    private function setCurrentFont($font)
+    private function setCurrentFont(Font $font): void
     {
         $this->font = $font;
     }
