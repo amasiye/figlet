@@ -40,12 +40,12 @@ class Figlet implements FigletInterface
     /**
      * @var string Background color.
      */
-    private string $backgroundColor;
+    private string $backgroundColor = '';
 
     /**
      * @var string Font color.
      */
-    private string $fontColor;
+    private string $fontColor = '';
 
     /**
      * @var string Font name.
@@ -77,6 +77,9 @@ class Figlet implements FigletInterface
         $this->fontDir = __DIR__ . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR;
         $this->fontName = 'big';
         $this->stretching = 0;
+        $this->colorManager = new ColorManager();
+        $this->fontManager = new FontManager();
+        $this->font = new Font();
     }
 
     /**
