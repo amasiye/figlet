@@ -97,14 +97,14 @@ class FontManager
         $parameters = $this->extractHeadlineParameters($font->getFileCollection());
 
         $font
-            ->setSignature($parameters['signature'])
-            ->setHardBlank($parameters['hard_blank'])
-            ->setHeight($parameters['height'])
-            ->setMaxLength($parameters['max_length'])
-            ->setOldLayout($parameters['old_layout'])
-            ->setCommentLines($parameters['comment_lines'])
-            ->setPrintDirection($parameters['print_direction'])
-            ->setFullLayout($parameters['full_layout']);
+            ->setSignature($parameters['signature'] ?? '')
+            ->setHardBlank($parameters['hard_blank'] ?? '')
+            ->setHeight($parameters['height'] ?? 1)
+            ->setMaxLength($parameters['max_length'] ?? 1)
+            ->setOldLayout($parameters['old_layout'] ?? 1)
+            ->setCommentLines($parameters['comment_lines'] ?? 0)
+            ->setPrintDirection($parameters['print_direction'] ?? 0)
+            ->setFullLayout($parameters['full_layout'] ?? 1);
 
         return $font;
     }
