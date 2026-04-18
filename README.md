@@ -8,13 +8,8 @@
 	            __/ |                                          
                |___/                                            	         
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ff60a14-e810-493e-9997-c77d99ffcd32/mini.png)](https://insight.sensiolabs.com/projects/4ff60a14-e810-493e-9997-c77d99ffcd32)
-[![Build Status](https://scrutinizer-ci.com/g/povils/figlet/badges/build.png?b=master)](https://scrutinizer-ci.com/g/povils/figlet/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/povils/figlet/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/povils/figlet/?branch=master)
-[![Total Downloads](https://poser.pugx.org/povils/figlet/downloads)](https://packagist.org/packages/povils/figlet)
-[![License](https://poser.pugx.org/povils/figlet/license)](https://packagist.org/packages/povils/figlet)
-[![Build Status](https://travis-ci.org/povils/figlet.svg?branch=master)](https://travis-ci.org/povils/figlet)
-[![Coverage Status](https://coveralls.io/repos/github/povils/figlet/badge.svg?branch=master)](https://coveralls.io/github/povils/figlet?branch=master)
+[![Total Downloads](https://poser.pugx.org/amasiye/figlet/downloads)](https://packagist.org/packages/amasiye/figlet)
+[![License](https://poser.pugx.org/amasiye/figlet/license)](https://packagist.org/packages/amasiye/figlet)
 
 ## Installation
 
@@ -30,7 +25,7 @@ composer require amasiye/figlet
 
 ## What is this? And what is Figlet?
 
-This is Php5 library which renders or outputs Figlet text in your console.
+This is a PHP 8.2+ library which renders or outputs Figlet text in your console.
 Figlet is a computer program that generates text banners, in a variety of typefaces, composed of letters made up of conglomerations of smaller ASCII characters
 
 ## Usage
@@ -53,15 +48,18 @@ $figlet
     ->write('Figlet');
 
 //Returns rendered string.
-$renderedFiglet = $figlet->render('Another Figlet')
+$renderedFiglet = $figlet->render('Another Figlet');
 
-- setFontDir(__DIR_ . '/fonts') // Change default font directory
-- setFontStretching(3) // Add spaces between letters
+// Change default font directory
+$figlet->setFontDir(__DIR__ . '/fonts');
+
+// Add spaces between letters
+$figlet->setFontStretching(3);
 ```
 
 #### Also there is figlet command line. Usage is quite straightforward.
 ```bash
-    ./figlet 'some figlet text' --font block --color yellow
+    ./figlet 'some figlet text' --font block --color yellow --bg-color blue --stretching 2
 ```
 
 ##### To make figlet executable from everywhere
@@ -69,5 +67,5 @@ $renderedFiglet = $figlet->render('Another Figlet')
 
 ##### For more options:
 ```bash
-    figlet -h
+    ./figlet -h
 ```
